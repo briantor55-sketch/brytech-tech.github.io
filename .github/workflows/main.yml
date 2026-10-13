@@ -1,0 +1,275 @@
+import os
+
+# Ensure the directory exists
+os.makedirs("generated", exist_ok=True)
+
+html_content = """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRYTECH | Advanced Tech Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+        body {
+            background-color: #0b0f19;
+            color: #f1f5f9;
+            line-height: 1.6;
+        }
+        header {
+            background-color: rgba(11, 15, 25, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1e293b;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: #38bdf8;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        .logo span {
+            color: #ffffff;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 25px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #94a3b8;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+        .hero {
+            background: radial-gradient(circle at top, #1e293b 0%, #0b0f19 70%);
+            padding: 120px 20px;
+            text-align: center;
+            border-bottom: 1px solid #1e293b;
+        }
+        .hero h1 {
+            font-size: 54px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        .hero h1 span {
+            color: #38bdf8;
+        }
+        .hero p {
+            font-size: 20px;
+            color: #94a3b8;
+            margin-bottom: 35px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-btn {
+            display: inline-block;
+            background-color: #38bdf8;
+            color: #0b0f19;
+            padding: 14px 35px;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        .cta-btn:hover {
+            background-color: #0284c7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4);
+        }
+        .section {
+            padding: 90px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            color: #ffffff;
+            margin-bottom: 50px;
+        }
+        .section-title span {
+            color: #38bdf8;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: #111827;
+            border: 1px solid #1e293b;
+            padding: 35px;
+            border-radius: 10px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .card:hover {
+            border-color: #38bdf8;
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-size: 22px;
+        }
+        .card p {
+            color: #94a3b8;
+        }
+        .contact-form {
+            max-width: 650px;
+            margin: 0 auto;
+            background: #111827;
+            border: 1px solid #1e293b;
+            padding: 45px;
+            border-radius: 10px;
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #cbd5e1;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            color: #ffffff;
+            border-radius: 6px;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #38bdf8;
+        }
+        .submit-btn {
+            background-color: #38bdf8;
+            color: #0b0f19;
+            border: none;
+            padding: 14px 20px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #0284c7;
+        }
+        footer {
+            background-color: #090d16;
+            border-top: 1px solid #1e293b;
+            color: #64748b;
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 38px; }
+            .nav-container { flex-direction: column; }
+            .nav-links { margin-top: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">BRY<span>TECH</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#solutions">Solutions</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Engineering Modern <span>Tech Infrastructure</span></h1>
+        <p>BRYTECH delivers scalable software design, cloud operations engineering, and robust digital integration frameworks for modern enterprises.</p>
+        <a href="#contact" class="cta-btn">Connect With an Engineer</a>
+    </section>
+
+    <section id="about" class="section">
+        <h2 class="section-title">About <span>BRYTECH</span></h2>
+        <p style="text-align: center; max-width: 850px; margin: 0 auto; font-size: 18px; color: #94a3b8;">
+            We bridge hardware efficiency and high-level software abstraction. BRYTECH architectures are customized from the ground up to ensure system speed, uninterrupted data flows, and secure computational footprints.
+        </p>
+    </section>
+
+    <section id="solutions" class="section">
+        <h2 class="section-title">Technical <span>Capabilities</span></h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Custom Software</h3>
+                <p>High-concurrency backend services, API interfaces, and native application builds optimized for high performance.</p>
+            </div>
+            <div class="card">
+                <h3>Cloud Frameworks</h3>
+                <p>Secure migration strategies, serverless container orchestration, and continuous data pipelines.</p>
+            </div>
+            <div class="card">
+                <h3>System Assurance</h3>
+                <p>Proactive security audits, internal network protection layouts, and automated platform testing pipelines.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2 class="section-title">Initiate <span>Consultation</span></h2>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Transmission Received. A BRYTECH team member will follow up shortly.');">
+            <div class="form-group">
+                <label for="name">Company Representative</label>
+                <input type="text" id="name" required placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="email">Corporate Email Address</label>
+                <input type="email" id="email" required placeholder="name@company.com">
+            </div>
+            <div class="form-group">
+                <label for="message">Project Scope Details</label>
+                <textarea id="message" rows="5" required placeholder="Describe your technical infrastructure goals or challenges..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit Request</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 BRYTECH. All engineering assets and system architectures reserved.</p>
+    </footer>
+
+</body>
+</html>
+"""
+
+with open("generated/index.html", "w", encoding="utf-8") as file:
+    file.write(html_content)
